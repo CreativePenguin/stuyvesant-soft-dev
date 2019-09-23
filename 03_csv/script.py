@@ -1,3 +1,8 @@
+#Winston Peng
+#SoftDev1 pd9
+#K06 -- Divine your Destiny!
+#2019-09-17
+
 import csv
 import random
 
