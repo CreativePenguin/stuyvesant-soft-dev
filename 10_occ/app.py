@@ -4,6 +4,7 @@
 # 2019-9-23
 
 from flask import Flask, render_template
+import static.script as script
 
 app = Flask(__name__)
 
@@ -11,8 +12,14 @@ app = Flask(__name__)
 def occupations():
     return render_template(
             'occ.html',
-            team = 'beaker',
+            team = 'Connor Oh, Nahi Khan, Winston Peng -- Team Beaker',
             header = 'Jinja Tuning -- Occupations',
-            title = 'Job Occupations'
+            title = 'Job Occupations',
+            randOcc = script.sol(),
+            occ = script.arr()
             )
+
+if __name__ == '__main__':
+    app.debug = True
+    app.run()
 

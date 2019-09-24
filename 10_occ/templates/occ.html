@@ -7,4 +7,17 @@
 
   <body>
     <h1>{{header}}</h1>
-    {{team}}
+    By: {{team}} <br>
+    Random Occupation: {{randOcc}}
+    <table>
+        {%for i in occ%}
+        <tr>
+            {%for j in i%}
+            <th> {{j}} </th>
+            {%endfor%}
+        </tr>
+        {%endfor%}
+    </table>
+  </body>
+</html>
+
