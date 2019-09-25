@@ -13,10 +13,14 @@ def occupations():
     return render_template(
             'occ.html',
             team = 'Connor Oh, Nahi Khan, Winston Peng -- Team Beaker',
+            # <h1>
             header = 'Jinja Tuning -- Occupations',
+            # <title>
             title = 'Job Occupations',
-            randOcc = script.sol(),
-            occ = script.arr()
+            # This gets the random job
+            randOcc = script.randJob(),
+            # Dictionary of the list
+            occ = script.csvDict
             )
 
 if __name__ == '__main__':

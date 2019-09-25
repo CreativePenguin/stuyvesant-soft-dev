@@ -10,11 +10,10 @@
     By: {{team}} <br>
     Random Occupation: {{randOcc}}
     <table>
-        {%for i in occ%}
+        {%for key in occ%}
         <tr>
-            {%for j in i%}
-            <th> {{j}} </th>
-            {%endfor%}
+            <td> {{key}} </td>
+            <td> {{occ[key]}} </td>
         </tr>
         {%endfor%}
     </table>
