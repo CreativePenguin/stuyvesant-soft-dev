@@ -37,9 +37,9 @@ def authenticate():
     printDict(request.args)
     # Take out data from args dictionary(which is part of request) and pass it through to Jinja
     return render_template(
-    'auth.html',
-    username = request.args["username"],
-    request_method = request.method
+        'auth.html',
+        username = request.args["username"],
+        request_method = request.method
     )
 
 #RANDOM DEBUG STATEMENTS
