@@ -19,4 +19,4 @@ def getDict():
 
 def addUser(usr, pwd):
     """Adds a new user"""
-    writefile.write('{},{}\n'.format(usr, pwd))
+    writefile.write(str(usr) + ',' + str(pwd) + '\n')  # Just adds another line to the file
