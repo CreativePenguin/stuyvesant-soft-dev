@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    {% extends "base.html" %}
+    <head>
+        {% block title %} Login {% endblock %}
+    </head>
+    <body>
+        {% block header %} <h1> Login </h1> {% endblock %}
+        {# if statement to ensure block only happens if there's a missing username or password #}
+        {% if error != None %}
+        <h3> {{error}} </h3>
+        {% endif %}
+        {#
+        {% block content %}
+        {% endblock %}
+        #}
+        <form action="/newuser">
+            <input type="submit" value="New Account">
+        </form>
+        {% block footer %} {% endblock %}
+    </body>
+</html>
