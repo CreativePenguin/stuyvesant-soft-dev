@@ -5,12 +5,19 @@
   </head>
   <body>
     <h1> Login </h1>
+    {# if statement to ensure block only happens if there's a missing username or password #}
+    {% if error != None %}
+    <h3> {{error}} </h3>
+    {% endif %}
     <form action="/auth">
       Username:<br>
       <input type="text" name="username"><br>
       Password:<br>
       <input type ="text" name="password"><br>
       <input type="submit" value="Submit">
+    </form>
+    <form action="/newuser">
+      <input type="submit" value="New Account">
     </form>
   </body>
 </html>
