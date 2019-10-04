@@ -18,11 +18,15 @@ def root():
     print(request.args)
     if 'username' in request.args:
         login_file.addUser(request.args['username'], request.args['password'])
-    session_user = session['username']
-    session_pwd = session['password']
-    if session_user in logins.keys():  # change so that this will only be true if user is already logged in
-        if session_pwd == logins[session_user]:
-            return redirect('/welcome')
+    # checks if username & password are already recorded
+    if 'username' in session and 'password' in session:
+        session_user = session['username']
+        session_pwd = session['password']
+        # verifies username and password
+        if session_user in logins.keys():
+            # verifies password separately to avoid null pointer
+            if session_pwd == logins[session_user]:
+                return redirect('/welcome')
     return redirect('/login')
 
 @app.route('/login')
