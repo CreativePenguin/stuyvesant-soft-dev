@@ -2,16 +2,10 @@
 <html>
     {% extends "base.html" %}
     <head>
-        {% block title %} New Account {% endblock %} 
+        {% block title %} New Account {% endblock %}
     </head>
     <body>
-        <h1> Create a New Account </h1>
-        <form action="/">
-            Username:<br>
-            <input type="text" name="username"><br>
-            Password:<br>
-            <input type ="text" name="password"><br>
-            <input type="submit" value="Submit">
-        </form>
+        {% block header %} <h1> Create a New Account </h1> {% endblock %}
+        {% block form %} {% endblock %}
     </body>
 </html>
