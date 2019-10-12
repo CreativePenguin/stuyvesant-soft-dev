@@ -14,12 +14,12 @@ c = db.cursor()               #facilitate db ops
 
 #==========================================================
 
-def create_table_sql(cls, table_name, column_names):
+def create_table_sql(cls, table_name, column_titles):
     """Return string that can be used to create SQL data table
-    The column_names should include the DATATYPE as part of the same string
+    The column_titles should include the DATATYPE as part of the same string
     """
     command = 'CREATE TABLE ' + table_name
-    for i in column_names:
+    for i in column_titles:
         command += i
     return command
 
@@ -32,7 +32,31 @@ def insert_into_sql(cls, table_name, column_vals):
         command += i
     return command
 
-def csv_to_table_sql(cls, csv_dict_reader):
+def get_sql_type(cls, var):
+    """ Gets the type of the variable in python, and returns the respective SQL type """
+    if type(var) is int or type(var) is float:
+        return 'NUMERIC'
+    if type(var) is str:
+        return 'TEXT'
+
+def get_sql_table_headers(cls, csv_dict_reader):
+    """ This takes in a csv dictionary reader type, and returns a list of the headings needed to make a table """
+    column_names = []
+    for row in csv_dict_reader:
+        for column in column_names:
+            column_names.append('{} {}'.format(column, get_sql_type(row[column])))
+        return column_names
+
+
+def csv_to_table_sql(cls, table_name, csv_dict_reader):
+    """Automatically converts a DictReader into a SQL data table"""
+    cmd = ''
+    column_names = []  # These are the key names
+    for row in csv_dict_reader:
+        column_names = row.keys()
+        break
+    column_names_with_datatype = get_sql_table_headers(csv_dict_reader)  # This is used to make the table headings as the datatype is required
+    cmd += create_table_sql(table_name, column_names_with_datatype)
 
 
 # < < < INSERT YOUR POPULATE-THE-DB CODE HERE > > >
@@ -42,6 +66,9 @@ with open('students.csv') as studentsFile:
         coursesReader = csv.DictReader(coursesFile)
         #c.execute(create_table_sql('students
         for i in studentsReader:
+            print(i)
+        for i in coursesReader:
+            print(i)
 
 
 
