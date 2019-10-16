@@ -15,7 +15,7 @@ c = db.cursor()               #facilitate db ops
 #==========================================================
 
 
-def create_table_sql(table_name, column_titles):
+def create_table_sql(table_name: str, column_titles: list) -> str: 
     """Return string that can be used to create SQL data table
     The column_titles should include the DATATYPE as part of the same string
     """
@@ -27,7 +27,7 @@ def create_table_sql(table_name, column_titles):
     return command + ');\n'
 
 
-def insert_into_sql(table_name, column_vals):
+def insert_into_sql(table_name: str, column_vals: list) -> str:
     """Return string that can be used to add rows to SQL data table
     The column_vals should include the DATATYPE as part of the same string
     """
@@ -38,16 +38,16 @@ def insert_into_sql(table_name, column_vals):
     return command + ');\n'
 
 
-def get_sql_type(var):
+def get_sql_type(var) -> str:
     """ Gets the type of the variable in python, and returns the respective SQL type """
     try:
         float(var)
         return 'NUMERIC'
-    except:
+    except ValueError:
         return 'TEXT'
 
 
-def get_sql_table_headers(csv_dict_reader):
+def get_sql_table_headers(csv_dict_reader: csv.DictReader) -> str:
     """ This takes in a csv dictionary reader type, and returns a list of the headings needed to make a table """
     column_names = []
     for row in csv_dict_reader:
@@ -56,7 +56,7 @@ def get_sql_table_headers(csv_dict_reader):
         return column_names
 
 
-def csv_to_table_sql(table_name, csv_dict_reader):
+def csv_to_table_sql(table_name: str, csv_dict_reader: csv.DictReader) -> str:
     """Automatically converts a DictReader into a SQL data table"""
     cmd = ''
     column_names = []  # These are the key names
