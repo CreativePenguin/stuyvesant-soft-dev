@@ -1,0 +1,3 @@
+[submodule "project_blog"]
+	path = project_blog
+	url = git@github.com:jacksonzou123/softdev-project0.git
