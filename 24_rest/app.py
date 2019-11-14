@@ -14,7 +14,7 @@ http = urllib3.PoolManager()
 def main():
     return render_template(
         'index.html',
-        tmp=http.request
+        tmp=http.request('GET', 'https://api.nasa.gov/planetary/apod?={}'.format(nasa_key))
     )
 
 if __name__ == '__main__':
