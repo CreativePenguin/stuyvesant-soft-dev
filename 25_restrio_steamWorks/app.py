@@ -9,6 +9,8 @@ import time
 import random
 app = Flask(__name__)
 numPics = 3
+
+'''
 @app.route("/")
 def root():
     output  = []
@@ -36,6 +38,12 @@ def loadJSON(data):
 def getOut(data):
     u = getData(data)
     return loadJSON(u)
+'''
+
+@app.route('/')
+def root():
+    return render_template('index.html')
+
 if __name__ == "__main__":
     app.debug = True
     app.run()
