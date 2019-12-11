@@ -6,12 +6,17 @@ var fib = function(n) {
 }
 
 var gcd = function(a, b) {
-    if(a < b) return gcd(a, b, a);
-    if(b < a) return gcd(a, b, b);
+    if(a < b) return gcdh(a, b, a);
+    if(b < a) return gcdh(a, b, b);
 }
 
-var gcd = function(a, b, c) {
+var gcdh = function(a, b, c) {
     if(c <= 1) return 1;
     if(a % c && b % c) return c;
-    return gcd(a, b, c - 1);
+    return gcdh(a, b, c - 1);
 }
+
+var rand = function((list) {
+    return list[Math.random() * list.length + 1];
+}
+
