@@ -16,7 +16,10 @@ var gcdh = function(a, b, c) {
     return gcdh(a, b, c - 1);
 }
 
-var rand = function((list) {
-    return list[Math.random() * list.length + 1];
-}
 
+var studentslist = ["Kenneth","Winston","Jeff","Nichol","Mr. Mykolyk"]
+
+var randomStudent = function(){
+  var rand = Math.floor(Math.random() * studentslist.length);
+  return studentslist[rand];
+}
