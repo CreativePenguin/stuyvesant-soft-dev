@@ -1,3 +1,9 @@
+/**
+ * @author Winston Peng
+ * Softdev P9
+ * K29 -- JavaScript p3
+ * 2019-12-13
+ */
 var changeHeading = function(e) {
     document.getElementById("h").innerHTML = e;
 };
@@ -11,11 +17,12 @@ var lis = document.getElementsByTagName("li");
 for(var i = 0; i < lis.length; i++) {
     //TODO: DELETE SOON -- This line just exists to stop errors
     var head = lis[i];
-    //lis[i].setAttribute("id", `item${i}`);
+
     // Can't figure out how to get this code to work
     lis[i].addEventListener('mouseover', () => {
         //TODO: Change this line too -- tmp fix
-        changeHeading(head.innerHTML);
+        changeHeading(lis[this]);
+        //changeHeading(this.onmouseover.innerHTML);
         //changeHeading(lis[i].innerHTML);
         //changeHeading(document.getElementById(``).innerHTML);
     });
@@ -30,20 +37,26 @@ var addItem = (element, value) => {
     var list = element;
     var item = document.createElement("li");
     item.innerHTML = value;
+    item.addEventListener('click', () => {
+        removeItem(this);
+    });
     list.append(item);
 };
 
-var addFib = function(n) {
-    
+var ele = [0, 1];
+var ele_counter = 0;
+var addFib2 = function() {
+    console.log(ele);
+    var val = ele[0] + ele[1];
+    ele[0] = ele[1];
+    ele[1] = val;
+    return val;
 };
 
-var addFib2 = function(n) {
-    console.log(n);
-    if (n == 0) return n;
-    if (n == 1) return n;
-    else {
-        return fib(n-1) + fib(n-2);
-    }
+var addFib = function() {
+    console.log(ele);
+    document.getElementById("fiblist");
+    addItem(document.getElementById("fiblist"), addFib2());
 };
 
 var b = document.getElementById("b");
