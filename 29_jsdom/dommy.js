@@ -5,31 +5,36 @@
  * 2019-12-13
  */
 var changeHeading = function(e) {
-    document.getElementById("h").innerHTML = e;
+    var h = document.getElementById("h");
+    h.innerHTML = e.target.innerHTML;
+};
+
+//alterHeading is undefined for some reason, and idk why
+var alterHeading = (e) => {
+    var h = document.getElementById("h");
+    h.innerHTML = this.innerHTML;
 };
 
 var removeItem = function(e) {
-    e.remove();
+    this.remove();
+    document.getElementById("h").innerHTML = "Hello World!";
 };
 
 var lis = document.getElementsByTagName("li");
 
 for(var i = 0; i < lis.length; i++) {
-    //TODO: DELETE SOON -- This line just exists to stop errors
-    var head = lis[i];
 
-    // Can't figure out how to get this code to work
-    lis[i].addEventListener('mouseover', () => {
-        //TODO: Change this line too -- tmp fix
-        changeHeading(lis[this]);
-        //changeHeading(this.onmouseover.innerHTML);
+    lis[i].addEventListener('mouseover', alterHeading);
+        //changeHeading(lis[this]);
         //changeHeading(lis[i].innerHTML);
-        //changeHeading(document.getElementById(``).innerHTML);
+    lis[i].addEventListener('mouseover', changeHeading);
+    lis[i].addEventListener('mouseout', () => {
+        document.getElementById("h").innerHTML = "Hello World!";
     });
-    lis[i].addEventListener('mouseout', () => {changeHeading("Hello World!");});
-    lis[i].addEventListener('click', () => {
-        removeItem(document.getElementById("test"));
-    });
+    //lis[i].addEventListener('click', () => {
+    //    removeItem(document.getElementById("test"));
+    //});
+    lis[i].addEventListener('click', removeItem);
     console.log(`lis[${i}]`);
 };
 
@@ -37,9 +42,10 @@ var addItem = (element, value) => {
     var list = element;
     var item = document.createElement("li");
     item.innerHTML = value;
-    item.addEventListener('click', () => {
-        removeItem(this);
-    });
+    //item.addEventListener('click', () => {
+    //    removeItem(this);
+    //});
+    item.addEventListener('click', removeItem);
     list.append(item);
 };
 
