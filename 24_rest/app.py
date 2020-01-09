@@ -12,6 +12,7 @@ http = urllib3.PoolManager()
 httprequest = http.request('GET', 'https://api.nasa.gov/planetary/apod?{}{}'.format('api_key=', nasa_key))
 http_dict = json.loads(httprequest.data.decode('utf-8'))
 
+
 @app.route('/')
 def main():
     return render_template(
