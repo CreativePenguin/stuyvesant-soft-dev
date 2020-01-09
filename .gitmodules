@@ -4,3 +4,6 @@
 [submodule "softdev-project1"]
 	path = softdev-project1
 	url = git@github.com:ahmedksultan/nounGenerator.git
+[submodule "softdev-project2"]
+	path = softdev-project2
+	url = git@github.com:snichol00/HumanJello.git
