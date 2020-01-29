@@ -1,9 +1,9 @@
 [submodule "softdev-project0"]
-	path = softdev-project0
+	path = fall/softdev-project0
 	url = git@github.com:jacksonzou123/softdev-project0.git
 [submodule "softdev-project1"]
-	path = softdev-project1
-	url = git@github.com:ahmedksultan/nounGenerator.git
+	path = fall/softdev-project1
+	url = git@github.com:creativePenguin/nounGenerator.git
 [submodule "softdev-project2"]
-	path = softdev-project2
+	path = fall/softdev-project2
 	url = git@github.com:snichol00/HumanJello.git
