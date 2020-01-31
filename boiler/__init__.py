@@ -10,7 +10,7 @@ app = Flask(__name__)
 @app.route('/')
 def main():
     return render_template(
-            'foo.html'
+            'root.html'
             )
 
 if __name__ == '__main__':
