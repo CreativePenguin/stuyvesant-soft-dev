@@ -1,14 +1,22 @@
 var canvas = document.getElementById("bobross");
 var ctx = canvas.getContext('2d');
-//var height = document.getElementById("bobross").height;
+var dot_type = document.getElementById("buildabear");
 
 var jolteon = function() {
-    ctx.clearRect()
-}
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+};
 
 var flareon = function() {
     console.log("Down With the Anarchy! All Hail Democracy!");
-}
+    ctx.fillRectangle(x, y, 10, 10);
+    if(dot_type.innerText == "draw-a-rectangle") {
+        dot_type.innerText = "draw-a-circle";
+    } else if(dot_type.innerText == "draw-a-circle") {
+        dot_type.innerText = "draw-a-rectangle";
+    } else {
+        console.log("something went wrong");
+    }
+};
 
 document.getElementById("clear").addEventListener("click", jolteon);
 document.getElementById("buildabear").addEventListener("click", flareon);
