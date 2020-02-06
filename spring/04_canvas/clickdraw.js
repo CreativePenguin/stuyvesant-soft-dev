@@ -8,6 +8,7 @@ var jolteon = function() {
 
 var flareon = function() {
     console.log("Down With the Anarchy! All Hail Democracy!");
+    
     ctx.fillRectangle(x, y, 10, 10);
     if(dot_type.innerText == "draw-a-rectangle") {
         dot_type.innerText = "draw-a-circle";
@@ -17,6 +18,15 @@ var flareon = function() {
         console.log("something went wrong");
     }
 };
-
+function getMousePos(canvas, evt) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+        x: evt.clientX - rect.left,
+        y: evt.clientY - rect.top
+    };
+}
 document.getElementById("clear").addEventListener("click", jolteon);
 document.getElementById("buildabear").addEventListener("click", flareon);
+canvas.addEventListener("click", function(evt) {
+    
+});
