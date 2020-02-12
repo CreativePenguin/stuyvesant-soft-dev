@@ -1,5 +1,6 @@
 var canvas = document.getElementById('playground');
 var ctx = canvas.getContext('2d');
+var clear_butt = document.getElementById('clear');
 
 var draw = function(x, y, size) {
     x = x - size * .5;
@@ -9,6 +10,9 @@ var draw = function(x, y, size) {
     ctx.fill();
 };
 
+clear_butt.addEventListener('click', () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
 canvas.addEventListener('click', (evt) => {
     draw(evt.pageX, evt.pageY, 5);
 });
