@@ -9,21 +9,14 @@ var draw_animation = null;
 var radius = 0;
 var isExpanding = true;
 
-var drawCircle = function() {
-  // Commented code to be used if you want to periodically do something
-  // if(!start) start = timestamp;
-  // var progress = timestamp - start;
-  // if(progress % 10) {
-  //   clear_animation = window.requestAnimationFrame(clear);
-  // }
-  // console.log(timestamp);
-  ctx.clearRect(0, 0, canvas.width, canvas.height); // clear canvas to allow circle to retract
+//var drawCircle = function(radi = 0) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawCircleH(radius);
-  //window.requestAnimationFrame returns id to stop it by
-  draw_animation = window.requestAnimationFrame(drawCircle);
   if(radius <= 0) isExpanding = true;
   if(radius >= canvas.width / 2) isExpanding = false;
-  radius += isExpanding ? 1 : -1;
+  drawCircleH(radi);
+  draw_animation = window.requestAnimationFrame(() => {drawCircle(radi + 1)});
+  radi += isExpanding ? 1 : -1;
 };
 
 var drawCircleH = function(radius) {
