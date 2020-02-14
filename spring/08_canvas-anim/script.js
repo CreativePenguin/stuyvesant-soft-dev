@@ -9,7 +9,10 @@ var dvdImgLen = 50; var dvdImgWid = 50;
 var aCircle, aDVD;
 var canvasX = canvas.getBoundingClientRect().left;
 var canvasY = canvas.getBoundingClientRect().top;
-var dvdX, dvdY;
+var dvdX = Math.random() * canvas.width;
+var dvdY = Math.random() * canvas.height;
+var dvdXInc = 5;
+var dvdYInc = 5;
 var radius = 0;
 const dvdDirection = Object.freeze({"XPLUSYPLUS":1, "XPLUSYMINUS":2, "XMINUSYPLUS":3, "XMINUSYMINUS":4});
 
@@ -40,20 +43,23 @@ var drawCircleH = function(radius) {
     ctx.fill();
 };
 
-var drawDVD = function(xPos, yPos, xInc, yInc) {
+var drawDVD = function() {
     // aDVD = window.requestAnimationFrame(() => {drawDVDH();});
     // changes xInc if it's at edge
-    xInc = xPos <= 0 || xPos >= canvas.width - dvdImgWid ? -xInc : xInc;
+    dvdXInc = dvdX <= 0 || dvdX >= canvas.width - dvdImgWid ? -dvdYInc : dvdXInc;
     // changes yInc if it's at edge
-    yInc = yPos <= 0 || yPos >= canvas.length - dvdImgLen ? -yInc : yInc;
-    aDVD = window.requestAnimationFrame(drawDVDH);
-    drawDVD(xPos + xInc, yPos + yInc, xInc, yInc);
+    dvdYInc = dvdY <= 0 || dvdY >= canvas.height - dvdImgLen ? -dvdYInc : dvdYInc;
+    clearCanvas();
+    ctx.drawImage(dvdImg, dvdX, dvdY, dvdImgWid, dvdImgLen);
+    aDVD = window.requestAnimationFrame(drawDVD);
+    dvdX += dvdXInc; dvdY += dvdYInc;
+    // drawDVD(dvdX + dvdXInc, dvdY + dvdYInc, dvdXInc, dvdYInc);
     // ctx.clearRect(0, 0, canvas.width, canvas.height);
 };
 
-var drawDVDH = function() {
+var drawDVDH = function(xPos, yPos) {
     // drawDVD(Math.random() * canvas.width - dvdImgWid,
-    //         Math.random() * canvas.length - dvdImgLen, 5, 5);
+    //         Math.random() * canvas.height - dvdImgLen, 5, 5);
 };
 
 bcircle.addEventListener('click', () => {
@@ -63,6 +69,10 @@ bcircle.addEventListener('click', () => {
     }
 });
 bdvd.addEventListener('click', () => {
+    if(aCircle) {
+        window.cancelAnimationFrame(aCircle);
+        aCircle = null;
+    }
     if(!aDVD) {
         clearCanvas();
         drawDVD();
