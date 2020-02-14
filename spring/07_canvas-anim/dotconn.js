@@ -4,19 +4,12 @@ var start_butt = document.getElementById('start');
 var stop_butt = document.getElementById('stop');
 var start = null;
 // This stores the animation variable created with requestAnimationFrame();
-var draw_animation = null; 
+var draw_animation = null;
 // var clear_animation = null;
 var radius = 0;
 var isExpanding = true;
 
 var drawCircle = function() {
-  // Commented code to be used if you want to periodically do something
-  // if(!start) start = timestamp;
-  // var progress = timestamp - start;
-  // if(progress % 10) {
-  //   clear_animation = window.requestAnimationFrame(clear);
-  // }
-  // console.log(timestamp);
   ctx.clearRect(0, 0, canvas.width, canvas.height); // clear canvas to allow circle to retract
   drawCircleH(radius);
   //window.requestAnimationFrame returns id to stop it by
