@@ -1,10 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> Kablooey </title>
+    <title>09_mongo | PengWin</title>
   </head>
   <body>
-    <p> Howdy </p>
-    <img src="static/uwuloo.gif">
+    <label for="borough">Borough</label>
+    <form action="/filter">
+      <select name="borough" id="borough_select">
+        <option value="all" selected>All</option>
+        <option value="manhattan">Manhattan</option>
+        <option value="queens">Queens</option>
+        <option value="brooklyn">Brooklyn</option>
+        <option value="bronx">Bronx</option>
+        <option value="staten_island">Staten Island</option>
+      </select>
+      <br>
+      <label for="zip">Zip Code</label>
+      <input type="number" name="zip" id="zip_input">
+      <br>
+      <label for="grade">Grade</label>
+      <select name="grade" id="grade_select">
+        <option value="all">All</option>
+        <option value="A">A</option>
+        <option value="Z">Z</option>
+      </select>
+      <label for="score">Max Score</label>
+      <input type="number" name="score" id="score_input">
+      <input type="submit" value="Submit">
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Cuisine</th>
+          <th>Grade</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
   </body>
+  <!-- <script src="{{url_for('static', filename='filterRestaurants.js')}}"></script> -->
 </html>
