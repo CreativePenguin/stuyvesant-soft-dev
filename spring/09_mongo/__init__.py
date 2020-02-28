@@ -22,18 +22,22 @@ restaurant_id = restaurant.insert_one(filedata).inserted_id()
 
 @app.route('/')
 def main():
-    print(restaurant_id.find({}))
+    print(restaurant_id.find({}, {'_id': 0}))
+    restaurant_info = restaurant_id.find({}, {'_id': 0})
     return render_template(
-            'foo.html'
-            )
+        'foo.html',
+        data=restaurant_info
+    )
 
 @app.route('/filter')
 def filter():
     if request.method == "POST":
-        borough = request.form['borough']
+        filter_params = {}
         zipcode = request.form['zip']
         grade = request.form['grade']
         score = request.form['score']
+        if not request.form['borough'] is None:
+            filter_params['borough'] = borough
 
 client.close()
 if __name__ == '__main__':
