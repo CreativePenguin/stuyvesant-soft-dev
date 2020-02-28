@@ -36,6 +36,6 @@ def filter():
         score = request.form['score']
 
 client.close()
-# if __name__ == '__main__':
-#     app.debug = True
-#     app.run()
+if __name__ == '__main__':
+    app.debug = True
+    app.run()
