@@ -38,8 +38,17 @@
           <th>Score</th>
         </tr>
       </thead>
+      {% for item in data %}
       <tbody>
+          <tr>
+              <th>{{item['name']}}</th>
+              <td>{{item['address']}}</td>
+              <td>{{item['cuisine']}}</td>
+              <td>{{item['date']['grade']}}</td>
+              <td>{{item['date']['score']}}</td>
+          </tr>
       </tbody>
+      {% endblock %}
     </table>
   </body>
   <!-- <script src="{{url_for('static', filename='filterRestaurants.js')}}"></script> -->
