@@ -33,7 +33,7 @@ def main():
     )
 
 @app.route('/filter')
-def filter():
+def restaurant_filter(address=None, date=None, borough=None, zipcode=None, grade=None, score=None):
     if request.method == "POST":
         filter_params = {}
         filter_params['address'] = {}
