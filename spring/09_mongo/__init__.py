@@ -4,45 +4,45 @@
 # 2019-9-23
 
 from flask import Flask, render_template, request, session
-from pymongo import MongoClient
-import pymongo
-import json
+import filter_restaurants
 
 app = Flask(__name__)
-client = MongoClient()
-db = client['09_mongo']
-restaurant = db['restaurants']
 # f1 = open('primer-dataset.json', 'r')
 # json.load(f1.readlines())
 # f1.close()
-with open('primer-dataset.json') as f:
-    for line in f.readline():
-        restaurant_id = restaurant.insert_one(line).inserted_id()
 # with open('primer-dataset.json') as f:
 #     filedata = json.load(f)
 # restaurant_id = restaurant.insert_one(filedata).inserted_id()
 
+if filter_restaurats.restaurant.find({}) is None:
+    filter_restaurants.fill_databse()
+
 
 @app.route('/')
 def main():
-    print(restaurant_id.find({}, {'_id': 0}))
-    restaurant_info = restaurant_id.find({}, {'_id': 0}) if session['filtered_data'] is None else session['filtered_data']
+    # Next line should return session['filtered_data'] only if it's not None
+    restaurant_info = \
+    filter_restaurants.restaurant.find(session['restaurant_data'],
+        {'_id': 0}) or filter_restaurants.restaurant.find({},
+        {'_id': 0})
     return render_template(
         'foo.html',
         data=restaurant_info
     )
 
+
 @app.route('/filter')
-def restaurant_filter(address=None, date=None, borough=None, zipcode=None, grade=None, score=None):
+def restaurant_filter():
     if request.method == "POST":
-        filter_params = {}
-        filter_params['address'] = {}
-        filter_params['date'] = {}
-        filter_params['borough'] = request.form['borough']
-        filter_params['address']['zipcode'] = request.form['zip']
-        filter_params['date']['grade'] = request.form['grade']
-        filter_params['date']['score'] = request.form['score']
-        session['filtered_data'] = restaurant_id.find(filter_params, {'_id': 0})
+        session['restaurant_data'] = filter_restaurants.restaurant.find(
+            filter_restaurants.cleanse(
+                request.form['borough'],
+                request.form['zip'],
+                request.form['grade'],
+                request.form['score']
+            ), {'_id': 0})
+        # session['filtered_data'] = restaurant_id.find(filter_params, {'_id': 0})
+
 
 client.close()
 
