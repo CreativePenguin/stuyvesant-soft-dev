@@ -3,13 +3,14 @@
 # K
 # 2019-9-23
 
-from flask import Flask, render_template, request
-import urllib, json
+from flask import Flask, render_template
+import urllib.request
+import json
+import utl.funcs
+import bson.json_util
+import pymongo
 
 app = Flask(__name__)
-u = urllib.request.urlopen('https://www.govtrack.us/api/v2/role?current=true&role_type=senator')
-response = u.read()
-data = json.loads(reponse)
 
 @app.route('/')
 def main():

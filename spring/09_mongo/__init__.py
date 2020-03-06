@@ -44,7 +44,7 @@ def restaurant_filter():
         # session['filtered_data'] = restaurant_id.find(filter_params, {'_id': 0})
 
 
-client.close()
+filter_restaurants.client.close()
 
 if __name__ == '__main__':
     app.debug = True
