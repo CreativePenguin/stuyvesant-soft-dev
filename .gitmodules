@@ -7,3 +7,6 @@
 [submodule "softdev-project2"]
 	path = fall/softdev-project2
 	url = git@github.com:snichol00/HumanJello.git
+[submodule "spring/tedx_mathematica"]
+	path = spring/tedx_mathematica
+	url = git@github.com:CreativePenguin/stuy-cs-softdev_mathematica.git
